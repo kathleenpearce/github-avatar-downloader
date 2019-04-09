@@ -9,28 +9,23 @@ function getRepoContributors(repoOwner, repoName, cb) {
       'User-Agent': 'request',
       'Authorization': 'Bearer ' + token
     }
-
 };
   request(options, function(err, res, body) {
-    cb(err, JSON.parse(body));
-});
-
+      for (user in JSON.parse(body)) {
+        cb(err, JSON.parse(body)[user].avatar_url);
+      };
+  });
 }
+
 function downloadImageByURL(url, filePath) {
 
 }
 
-
-
 getRepoContributors("jquery", "jquery", function(err, result) {
-  console.log("Errors:", err);
-  for(i = 0; i < result.length; i++) {
-    console.log("Result:", result[i].avatar_url);
-  }
-
-
+    console.log(result);
 
 });
+
 
 
 
