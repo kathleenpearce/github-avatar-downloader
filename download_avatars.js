@@ -12,8 +12,15 @@ function getRepoContributors(repoOwner, repoName, cb) {
 };
   request(options, function(err, res, body) {
     cb(err, JSON.parse(body))
-  });
-}
+    if (process.argv[2]) {
+      console.log(downloadImageByURL)
+    } else {
+      console.log("Please input your username and github url")
+    }
+
+    });
+  };
+
 
 function downloadImageByURL(url, filePath) {
   var request = require('request');
